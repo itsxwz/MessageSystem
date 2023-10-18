@@ -1,10 +1,14 @@
 ﻿using System;
 
-namespace UnityFramework {
+namespace UnityFramework.MessageSystem
+{
+    /// <summary>
+    /// 消息接收者接口
+    /// </summary>
     public interface IMessageReceiver
     {
-        void AddDelegate(string key, Delegate handle);
-        void RemoveDelegate(string key, Delegate handle);
-        void RemoveAllDelegate(string key);
+        void Add(string key, Delegate handle);
+        void Remove(string key, Delegate handle);
+        void RemoveAll(string key);
     }
 }

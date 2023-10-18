@@ -1,51 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UnityFramework
+namespace UnityFramework.MessageSystem
 {
+    /// <summary>
+    /// 消息接收者
+    /// </summary>
     public class MessageReceiver : IMessageReceiver
     {
-        MessageHolder holder;
+        readonly MessageHolder messageHolder;
 
-        Dictionary<string, Delegate> NeedHandle
+        Dictionary<string, Delegate> MessageNeedHandle => messageHolder.MessageNeedHandle;
+
+        public MessageReceiver(MessageHolder messageHolder)
         {
-            get { return holder.NeedHandle; }
+            this.messageHolder = messageHolder;
         }
 
-        public MessageReceiver(MessageHolder holder)
+        public void Add(string key, Delegate handle)
         {
-            this.holder = holder;
-        }
-
-        public void AddDelegate(string key, Delegate handle)
-        {
-            if (!NeedHandle.ContainsKey(key))
+            if (!MessageNeedHandle.ContainsKey(key))
             {
-                NeedHandle.Add(key, handle);
+                MessageNeedHandle.Add(key, handle);
             }
             else
             {
-                NeedHandle[key] = Delegate.Combine(NeedHandle[key], handle);
+                MessageNeedHandle[key] = Delegate.Combine(MessageNeedHandle[key], handle);
             }
         }
 
-        public void RemoveDelegate(string key, Delegate handle)
+        public void Remove(string key, Delegate handle)
         {
-            if (NeedHandle.ContainsKey(key))
+            if (MessageNeedHandle.ContainsKey(key))
             {
-                NeedHandle[key] = Delegate.Remove(NeedHandle[key], handle);
-                if (NeedHandle[key] == null)
+                MessageNeedHandle[key] = Delegate.Remove(MessageNeedHandle[key], handle);
+                if (MessageNeedHandle[key] == null)
                 {
-                    NeedHandle.Remove(key);
+                    MessageNeedHandle.Remove(key);
                 }
             }
         }
 
-        public void RemoveAllDelegate(string key)
+        public void RemoveAll(string key)
         {
-            if (NeedHandle.ContainsKey(key))
+            if (MessageNeedHandle.ContainsKey(key))
             {
-                NeedHandle.Remove(key);
+                MessageNeedHandle[key] = null;
+                MessageNeedHandle.Remove(key);
             }
         }
     }

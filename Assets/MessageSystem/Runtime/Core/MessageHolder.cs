@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace UnityFramework {
+namespace UnityFramework.MessageSystem
+{
+    /// <summary>
+    /// 消息持有者
+    /// </summary>
     public class MessageHolder
     {
-        public Action<IMessage> MessageNotHandled;
-        public Dictionary<string, Delegate> NeedHandle = new Dictionary<string, Delegate>();
+        public readonly Action<IMessage> MessageNotHandle = default;
+        public readonly Dictionary<string, Delegate> MessageNeedHandle = new Dictionary<string, Delegate>();
     }
 }

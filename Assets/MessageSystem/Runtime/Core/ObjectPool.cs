@@ -1,11 +1,14 @@
 using System;
 
-namespace UnityFramework
+namespace UnityFramework.MessageSystem
 {
-    public sealed class ObjectPool<T>
-        where T : new()
+    /// <summary>
+    /// 对象池
+    /// </summary>
+    /// <typeparam name="T">new()</typeparam>
+    internal sealed class ObjectPool<T> where T : new()
     {
-        private int growSize = 20;
+        private readonly int growSize = 20;
 
         private T[] pool;
 
@@ -22,26 +25,30 @@ namespace UnityFramework
 
             Resize(size, false);
         }
-        
-        public int Length
-        {
-            get { return pool.Length; }
-        }
-        
-        public int Available
-        {
-            get { return pool.Length - nextIndex; }
-        }
-        
-        public int Allocated
-        {
-            get { return nextIndex; }
-        }
 
+        /// <summary>
+        /// 池容量
+        /// </summary>
+        public int Capacity => pool.Length;
+
+        /// <summary>
+        /// 可获取数量
+        /// </summary>
+        public int AvailableCount => pool.Length - nextIndex;
+
+        /// <summary>
+        /// 已分配数量
+        /// </summary>
+        public int AllocatedCount => nextIndex;
+
+        /// <summary>
+        /// 分配
+        /// </summary>
+        /// <returns></returns>
         public T Allocate()
         {
             T t = default(T);
-            
+
             if (nextIndex >= pool.Length)
             {
                 if (growSize > 0)
@@ -53,7 +60,7 @@ namespace UnityFramework
                     return t;
                 }
             }
-            
+
             if (nextIndex >= 0 && nextIndex < pool.Length)
             {
                 t = pool[nextIndex];
@@ -63,13 +70,17 @@ namespace UnityFramework
             return t;
         }
 
+        /// <summary>
+        /// 回收
+        /// </summary>
+        /// <param name="t"></param>
         public void Release(T t)
         {
             if (t == null)
             {
                 return;
             }
-            
+
             if (nextIndex > 0)
             {
                 nextIndex--;
@@ -77,6 +88,9 @@ namespace UnityFramework
             }
         }
 
+        /// <summary>
+        /// 重置
+        /// </summary>
         public void Reset()
         {
             int len = growSize;
@@ -102,7 +116,7 @@ namespace UnityFramework
                     count = pool.Length;
                     Array.Copy(pool, newPool, Math.Min(count, size));
                 }
-                
+
                 for (int i = count; i < size; i++)
                 {
                     newPool[i] = new T();

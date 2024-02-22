@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace XR
 {
-    public class MessageSender : IMessageSender
+    internal class MessageSender : IMessageSender
     {
         readonly MessageHolder messageHolder;
 

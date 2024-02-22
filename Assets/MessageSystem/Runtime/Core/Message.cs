@@ -1,6 +1,6 @@
 ﻿namespace XR
 {
-    public class Message : IMessage
+    internal class Message : IMessage
     {
         public string key { get; set; }
 

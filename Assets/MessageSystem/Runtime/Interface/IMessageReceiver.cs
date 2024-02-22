@@ -2,7 +2,7 @@
 
 namespace XR
 {
-    public interface IMessageReceiver
+    internal interface IMessageReceiver
     {
         void Add(string key, Delegate handle);
         void Remove(string key, Delegate handle);

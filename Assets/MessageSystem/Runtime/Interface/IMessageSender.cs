@@ -1,6 +1,6 @@
 ﻿namespace XR
 {
-    public interface IMessageSender
+    internal interface IMessageSender
     {
         void SendMessage(IMessage mes);
         void SendMessage<T1>(IMessage<T1> message);

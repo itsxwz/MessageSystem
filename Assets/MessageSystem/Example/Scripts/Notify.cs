@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace UnityFramework.MessageSystem.Example
+namespace XR.MessageSystem.Example
 {
     public class Notify : MonoBehaviour
     {

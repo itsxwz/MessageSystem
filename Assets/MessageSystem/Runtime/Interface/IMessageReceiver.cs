@@ -1,10 +1,7 @@
 ﻿using System;
 
-namespace UnityFramework.MessageSystem
+namespace XR
 {
-    /// <summary>
-    /// 消息接收者接口
-    /// </summary>
     public interface IMessageReceiver
     {
         void Add(string key, Delegate handle);

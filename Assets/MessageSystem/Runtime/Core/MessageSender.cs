@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UnityFramework.MessageSystem
+namespace XR
 {
-    /// <summary>
-    /// 消息发送者
-    /// </summary>
     public class MessageSender : IMessageSender
     {
         readonly MessageHolder messageHolder;

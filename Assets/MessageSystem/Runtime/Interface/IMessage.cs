@@ -1,4 +1,4 @@
-﻿namespace UnityFramework.MessageSystem
+﻿namespace XR
 {
     public interface IMessage
     {

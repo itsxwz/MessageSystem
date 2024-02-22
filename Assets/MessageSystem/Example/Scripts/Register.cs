@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UnityFramework.MessageSystem.Example
+namespace XR.MessageSystem.Example
 {
     public class Register : MonoBehaviour
     {

@@ -1,11 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
 
-namespace UnityFramework.MessageSystem
+namespace XR
 {
-    /// <summary>
-    /// 消息持有者
-    /// </summary>
     public class MessageHolder
     {
         public readonly Action<IMessage> MessageNotHandle = default;

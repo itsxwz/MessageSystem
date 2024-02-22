@@ -1,6 +1,6 @@
 using System;
 
-namespace UnityFramework.MessageSystem
+namespace XR
 {
     /// <summary>
     /// 对象池

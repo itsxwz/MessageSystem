@@ -1,8 +1,5 @@
-﻿namespace UnityFramework.MessageSystem
+﻿namespace XR
 {
-    /// <summary>
-    /// 消息发送者接口
-    /// </summary>
     public interface IMessageSender
     {
         void SendMessage(IMessage mes);

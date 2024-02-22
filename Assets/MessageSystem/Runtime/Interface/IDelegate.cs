@@ -1,4 +1,4 @@
-﻿namespace UnityFramework.MessageSystem
+﻿namespace XR
 {
     public delegate void V0();
     public delegate void V1<in T1>(T1 t1);

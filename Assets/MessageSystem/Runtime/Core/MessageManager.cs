@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace UnityFramework.MessageSystem
+namespace XR
 {
-    /// <summary>
-    /// 消息管理器
-    /// 添加/删除/发送消息
-    /// </summary>
     public class MessageManager
     {
         private static MessageManager instance = default;
